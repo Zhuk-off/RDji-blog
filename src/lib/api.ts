@@ -1,7 +1,5 @@
-import { LocationMenu } from '@/interfaces/footerHeaderRestAPIDataResponse';
 import axios from 'axios';
 import { FOOTER_HEADER_ENDPOINT } from './constants';
-import { modifyUrlBackendToFrontend } from './helpers';
 
 const API_URL = process.env.WORDPRESS_API_URL;
 
@@ -32,11 +30,11 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   return json.data;
 }
 
-export async function getMenu(location: LocationMenu) {
+export async function getMenu() {
   const data = await fetchAPI(
     `
-    query Menu($location: MenuLocationEnum = null) {
-      menus(where: {location: $location}) {
+    query Menu {
+      menus {
         edges {
           node {
             menuItems {
@@ -80,10 +78,7 @@ export async function getMenu(location: LocationMenu) {
         }
       }
     }
-    `,
-    {
-      variables: { location },
-    }
+    `
   );
   return data.menus?.edges[0]?.node?.menuItems?.edges;
 }
@@ -349,11 +344,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
 // Get footer and header data from the plugin Headless CMS (Rest  API)
 export async function getFooterHeaderRestAPIData() {
   const { data } = await axios.get(FOOTER_HEADER_ENDPOINT);
-  // console.log(
-  //   'FOOTER_HEADER_ENDPOINT',FOOTER_HEADER_ENDPOINT , data
-  // );
   const dataRestModify = data;
-  // const dataRestModify = modifyUrlBackendToFrontend(data);
   return dataRestModify;
 }
 
@@ -445,7 +436,7 @@ export async function getAllPagesSlug() {
 export function filterSlugPages(slugs) {
   let slugWithFilter = null;
   if (Array.isArray(slugs)) {
-    // для путей страниц
+    // For pages
     slugWithFilter = slugs.filter(
       (slug) =>
         slug !== '/cart' &&
@@ -456,7 +447,7 @@ export function filterSlugPages(slugs) {
     );
   } else {
     if (slugs) {
-      // для siteMap
+      // for Sitemap
       slugWithFilter =
         slugs !== '/cart' &&
         slugs !== '/checkout' &&
