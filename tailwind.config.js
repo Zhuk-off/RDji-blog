@@ -10,7 +10,12 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'bg_home': "url('/bg_home1.webp')",
+       
+      }
+    }
   },
   plugins: [],
 };

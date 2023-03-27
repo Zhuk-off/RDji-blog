@@ -9,6 +9,7 @@ export interface IData {
 }
 
 export interface IHeader {
+  [x: string]: any;
   siteLogoUrl: string;
   siteTitle: string;
   siteDescription: string;
@@ -57,6 +58,6 @@ export interface IWPMenuItem {
     label: string;
     parentId: string | null;
     uri: string;
-    childItems: { edges: IWPMenuItem[] };
+    childItems?: { edges: IWPMenuItem[] };
   };
 }

@@ -80,7 +80,9 @@ export async function getMenu() {
     }
     `
   );
-  return data.menus?.edges[0]?.node?.menuItems?.edges;
+  return data.menus?.edges[0]?.node?.menuItems?.edges.length === 0
+    ? data.menus?.edges[1]?.node?.menuItems?.edges
+    : data.menus?.edges[0]?.node?.menuItems?.edges;
 }
 export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
