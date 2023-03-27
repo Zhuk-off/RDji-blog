@@ -32,6 +32,7 @@ import { Header1 } from '@/components/header';
 import logo from '/public/bg_home.webp';
 import Image from 'next/image';
 import Container from '@/components/container';
+import { TitleBlock } from '@/components/title';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 const BASE_URL = 'https://hn.algolia.com/api/v1/search?';
@@ -164,8 +165,8 @@ export default function Home({
             headerItemsMenuLeft={headerItemsMenuLeft}
             headerItemsMenuRight={headerItemsMenuRight}
           />
-          <div className="">
-            <h1>Title</h1>
+          <div className="mt-10 sm:mt-12">
+          <TitleBlock/>
           </div>
          
         </Container>

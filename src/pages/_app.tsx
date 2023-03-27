@@ -155,6 +155,20 @@ const globalStyles = (
  * Material UI Theme
  */
 const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#fff',
+      main: '#D8D3D6',
+      dark: '#A6A2A4',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
   components: {
     MuiPopover: {
       defaultProps: {

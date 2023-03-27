@@ -29,25 +29,25 @@ export const Header1 = ({
     <header className="w-full">
       <menu
         className="hidden md:flex justify-between items-center flex-nowrap whitespace-nowrap
-      font-bold text-base text-slate-600 p-10"
+      font-bold text-base p-10"
       >
         {headerItemsMenuLeft.map((itemMenu) => (
           <Link
             href={itemMenu.node.uri}
             key={itemMenu.node.id}
-            className="uppercase text-white text-opacity-70"
+            className="uppercase text-white text-opacity-70 hover:text-opacity-100 transition"
           >
             {itemMenu.node.label}
           </Link>
         ))}
         <Link href={'/'}>
-          <Image src={logo} alt={'RDji_logo'} width={100} height={100} />
+          <Image src={logo} alt={'RDji_logo'} width={100} height={100} className='opacity-80 hover:opacity-100 transition'/>
         </Link>
         {headerItemsMenuRight.map((itemMenu) => (
           <Link
             href={itemMenu.node.uri}
             key={itemMenu.node.id}
-            className="uppercase text-white text-opacity-70"
+            className="uppercase text-white text-opacity-70 hover:text-opacity-100 transition"
           >
             {itemMenu.node.label}
           </Link>
@@ -55,13 +55,9 @@ export const Header1 = ({
       </menu>
       <menu className="flex justify-between md:hidden pt-4">
         <li>
-          <Image
-            src={logo}
-            alt={'RDji_logo'}
-            width={100}
-            height={70}
-            className="ml-2"
-          />
+        <Link href={'/'} className='block'>
+          <Image src={logo} alt={'RDji_logo'} width={100} height={70} className='opacity-80 ml-2'/>
+        </Link>
         </li>
 
         <li>
