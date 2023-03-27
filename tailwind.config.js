@@ -11,11 +11,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // backgroundColor: '#010101',
       backgroundImage: {
-        'bg_home': "url('/bg_home1.webp')",
-       
-      }
-    }
+        bg_home: "url('/bg_home1.webp')",
+      },
+    },
   },
   plugins: [],
 };
