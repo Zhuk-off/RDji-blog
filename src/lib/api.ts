@@ -158,6 +158,14 @@ export async function getAllPostsForHome(preview) {
             excerpt
             slug
             date
+            categories {
+              edges {
+                node {
+                  name
+                  slug
+                }
+              }
+            }
             featuredImage {
               node {
                 sourceUrl

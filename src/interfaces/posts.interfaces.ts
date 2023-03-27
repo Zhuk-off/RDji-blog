@@ -8,7 +8,7 @@ export interface IPostResponseShort {
     featuredImage: INode | null;
     slug: string;
     title: string;
-    // categories: ICategories;
+    categories: ICategories;
     // content: string;
     // seo?: ISeoRes;
     // tags: ITags;
@@ -42,6 +42,7 @@ interface ICategories {
 interface ICategory {
   node: {
     name: string;
+    slug: string;
   };
 }
 

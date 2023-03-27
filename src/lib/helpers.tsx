@@ -1,7 +1,8 @@
-
 /** Use to modify page URLs from backend to frontend.
  * The default WordPress tools don't work.
  * When creating a post, an error occurs in WordPress. */
+
+import { IPostResponseShort } from '@/interfaces/posts.interfaces';
 
 export const modifyUrlBackendToFrontend = (data: object): object => {
   // console.log('modifyUrlBackendToFrontend start', data);
@@ -16,7 +17,10 @@ export const modifyUrlBackendToFrontend = (data: object): object => {
         } else {
           let result = key.match(/^url$/);
           if (result) {
-            if (typeof element === 'string' && process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL) {
+            if (
+              typeof element === 'string' &&
+              process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL
+            ) {
               const elementReplaced = element.replace(
                 process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL,
                 // process.env.NEXT_PUBLIC_SITE_URL
@@ -33,4 +37,18 @@ export const modifyUrlBackendToFrontend = (data: object): object => {
   // console.log('modifyUrlBackendToFrontend end', data);
   return data;
 };
+
+export const getCategory = (allPosts: IPostResponseShort[]) => {
+  const categories = [];
+  allPosts.map((item) =>
+    item.node.categories.edges.map((i) => categories.push(i.node.name))
+  );
+  const newSet = new Set(categories);
+  const uniqCat = Array.from(newSet);
+  const filteredByUncategorized = uniqCat.filter(
+    (item) => item !== 'Uncategorized'
+  );
+  return filteredByUncategorized;
+};
+
 
