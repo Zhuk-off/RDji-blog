@@ -6,9 +6,13 @@ import logo from '/public/RDji_logo.svg';
 export const Footer = ({
   footerItemsMenuLeft,
   footerItemsMenuRight,
+  aboutCompanyInFooterBlock,
+  copyright,
 }: {
   footerItemsMenuLeft: IWPMenuItem[];
   footerItemsMenuRight: IWPMenuItem[];
+  aboutCompanyInFooterBlock: string;
+  copyright: string;
 }) => {
   return (
     <footer
@@ -28,12 +32,16 @@ export const Footer = ({
             />
           </Link>
 
-          <p className="max-w-xs text-base font-normal uppercase">
-            RDji Corporation123 <br /> Main Street, Suite 456,
-            <br /> Anytown USA 12345
-            <br /> Phone: (555) 123-4567
-            <br /> Email: info@rdjicorp
-          </p>
+          <p
+            className="max-w-xs text-base font-normal uppercase"
+            dangerouslySetInnerHTML={{
+              __html:
+                aboutCompanyInFooterBlock &&
+                typeof aboutCompanyInFooterBlock === 'string'
+                  ? aboutCompanyInFooterBlock
+                  : null,
+            }}
+          />
         </div>
         <div className="">
           <menu className="flex flex-col items-center gap-4 sm:items-start">
@@ -58,9 +66,12 @@ export const Footer = ({
           </menu>
         </div>
       </div>
-      <p className="mt-12 pb-2 text-center">
-        © 2023 RDji Corporation. All rights reserved.
-      </p>
+      <p
+        className="mt-12 pb-2 text-center"
+        dangerouslySetInnerHTML={{
+          __html: copyright && typeof copyright === 'string' ? copyright : null,
+        }}
+      />
     </footer>
   );
 };

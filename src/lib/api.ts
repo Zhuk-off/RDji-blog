@@ -82,8 +82,6 @@ export async function getMenu() {
     `
   );
 
-
-  
   return data.menus?.edges[0]?.node?.menuItems?.edges.length === 0
     ? data.menus?.edges[1]?.node?.menuItems?.edges
     : data.menus?.edges[0]?.node?.menuItems?.edges;
@@ -497,6 +495,11 @@ export async function getAllPagesSlug() {
         node {
           slug
           modified
+          siteInformation {
+            aboutUsBlock
+            copyright
+            aboutCompanyInFooterBlock
+          }
         }
       }
     }

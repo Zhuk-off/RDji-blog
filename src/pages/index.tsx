@@ -1,6 +1,7 @@
 import { Open_Sans } from 'next/font/google';
 import { GetStaticProps } from 'next';
 import {
+  getAllPagesSlug,
   getAllPostsForHome,
   getFooterHeaderRestAPIData,
   getMenu,
@@ -49,6 +50,7 @@ export default function Home({
   headerItemsMenuLeft,
   footerItemsMenuLeft,
   footerItemsMenuRight,
+  additionalInformationOnTheSite,
 }: {
   allPosts: IPostResponseShort[];
   preview: any;
@@ -60,8 +62,13 @@ export default function Home({
   headerItemsMenuLeft: IWPMenuItem[];
   footerItemsMenuLeft: IWPMenuItem[];
   footerItemsMenuRight: IWPMenuItem[];
+  additionalInformationOnTheSite: any;
 }) {
   const categories = getCategory(allPosts);
+  console.log(additionalInformationOnTheSite);
+
+  const { aboutCompanyInFooterBlock, aboutUsBlock, copyright } =
+    additionalInformationOnTheSite;
 
   return (
     <>
@@ -86,7 +93,7 @@ export default function Home({
             <TitleBlock />
           </div>
 
-          <About />
+          <About aboutUsBlock={aboutUsBlock} />
           <Category categories={categories} allPosts={allPosts} />
           <Projects
             categories={categories}
@@ -95,8 +102,10 @@ export default function Home({
           />
           <Contact />
           <Footer
-                footerItemsMenuLeft={footerItemsMenuLeft}
-                footerItemsMenuRight={footerItemsMenuRight}
+            footerItemsMenuLeft={footerItemsMenuLeft}
+            footerItemsMenuRight={footerItemsMenuRight}
+            aboutCompanyInFooterBlock={aboutCompanyInFooterBlock}
+            copyright={copyright}
           />
         </Container>
       </main>
@@ -106,6 +115,8 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllPostsForHome(preview);
+  const pages = await getAllPagesSlug();
+  const additionalInformationOnTheSite = pages?.edges[0].node.siteInformation;
   const pagination = await getPostsPagination(100000, '');
   const headerItemsMenu = await getMenuByLocation(LocationMenu.HEADER_HCMS);
   const footerItemsMenu = await getMenuByLocation(LocationMenu.HEADER_HCMS);
@@ -142,6 +153,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       headerItemsMenuRight,
       footerItemsMenuLeft,
       footerItemsMenuRight,
+      additionalInformationOnTheSite,
     },
     revalidate: 10,
   };
