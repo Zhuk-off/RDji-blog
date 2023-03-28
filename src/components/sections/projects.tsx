@@ -14,40 +14,7 @@ import { TextFieldProps } from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { CategoryPosts } from './categoryPosts';
-
-const FindWhiteTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: '#fff',
-  },
-  '& label.MuiFormLabel-colorPrimary': {
-    color: '#A6A2A4',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#fff',
-  },
-  '& .MuiInputBase-root-MuiInput-root:before': {
-    color: '#A6A2A4',
-  },
-  '& .css-1g30tq1-MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled, .Mui-error):before':
-    {
-      borderBottomColor: '#A6A2A4',
-    },
-  '& .css-1g30tq1-MuiInputBase-root-MuiInput-root:before': {
-    borderBottomColor: '#A6A2A4',
-  },
-
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#A6A2A4',
-    },
-    '&:hover fieldset': {
-      borderColor: '#fff',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#fff',
-    },
-  },
-});
+import { FindWhiteTextField } from '@/lib/helpers';
 
 export const Projects = ({
   categories,

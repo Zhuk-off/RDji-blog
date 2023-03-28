@@ -39,6 +39,7 @@ import { About } from '@/components/sections/about';
 import { Category } from '@/components/sections/category';
 import { getCategory } from '@/lib/helpers';
 import { Projects } from '@/components/sections/projects';
+import { Contact } from '@/components/sections/contact';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 const BASE_URL = 'https://hn.algolia.com/api/v1/search?';
@@ -189,6 +190,7 @@ export default function Home({
             allPosts={allPosts}
             pagination={pagination}
           />
+          <Contact/>
         </Container>
       </main>
     </>
