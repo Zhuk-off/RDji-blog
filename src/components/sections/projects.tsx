@@ -94,44 +94,7 @@ export const Projects = ({
       )
     )
   );
-
-  const categoryCard = categories.map((cat) => {
-    const post = allPosts.find(
-      (post) => post.node.categories.edges[0].node.name === cat
-    );
-    return (
-      <li key={cat}>
-        {post.node.featuredImage?.node?.sourceUrl ? (
-          <>
-            <div
-              className="relative md:inline-block 
-              w-max-[365px] h-[482px]
-              md:w-[365px] md:h-[482px]
-            max-w-[365px]
-            "
-            >
-              <Image
-                src={post.node.featuredImage?.node?.sourceUrl}
-                alt={cat}
-                width={365}
-                height={480}
-                className="object-cover w-full h-full "
-              />
-              <div className="w-full h-1/2 absolute bottom-0 left-0 bg-gradient-to-t from-[#010101] to-transparent" />
-              <h3
-                className="absolute bottom-10 left-1/2 -translate-x-1/2
-                text-2xl md:text-4xl uppercase text-white
-                    "
-              >
-                {post.node.categories.edges[0].node.name}
-              </h3>
-            </div>
-          </>
-        ) : null}
-      </li>
-    );
-  });
-
+ 
   return (
     <section
       id="#projects"
@@ -162,9 +125,9 @@ export const Projects = ({
       </div>
 
       <div className="sm:mt-10 md:mt-12 text-white text-opacity-80">
-        {Object.keys(postByCat).map((cat) => (
+        {posts.length!==0 ? Object.keys(postByCat).map((cat) => (
           <CategoryPosts key={cat} allPostsCat={postByCat[cat]} catName={cat} />
-        ))}
+        )):<p className='text-center pb-6 font-normal text-red-600'>Not Found. Change your query, please.</p>}
       </div>
     </section>
   );

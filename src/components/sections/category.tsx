@@ -1,4 +1,5 @@
 import { IPostResponseShort } from '@/interfaces/posts.interfaces';
+import { DEFAULT_IMG_URL } from '@/lib/constants';
 import Image from 'next/image';
 import aboutImg from '/public/aboutImg.png';
 import droneImg from '/public/drone.svg';
@@ -23,7 +24,7 @@ export const Category = ({
               className="relative md:inline-block 
               w-max-[365px] h-[482px]
               md:w-[365px] md:h-[482px]
-            max-w-[365px]
+              max-w-[365px]
             "
             >
               <Image

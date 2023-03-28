@@ -6,7 +6,7 @@ export const About = () => {
   return (
     <section
       id="#about"
-      className="mt-96 sm:mt-[550px] md:mt-[700px] lg:mt-[900px] 
+      className="mt-96 sm:mt-[550px] md:mt-[700px] lg:mt-[900px] xl:mt-[650px]
 bg-gradient-to-t from-[#010101] to-transparent pt-3"
     >
       <div className="flex gap-2 justify-center">

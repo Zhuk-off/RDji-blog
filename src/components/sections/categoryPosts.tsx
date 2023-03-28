@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import droneImg from '/public/drone.svg';
 import { alpha, styled } from '@mui/material/styles';
+import Link from 'next/link';
+import { DEFAULT_IMG_URL } from '@/lib/constants';
 
 const PaginationWhite = styled(Pagination)({
   '& button.MuiPaginationItem-textPrimary': {
@@ -29,13 +31,13 @@ export const CategoryPosts = ({
   catName: string;
 }) => {
   // Выводимые посты на страницу
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<IPostResponseShort[]>([]);
   // строка поиска
   const [query, setQuery] = useState('');
   // текущая страница пагинации
   const [page, setPage] = useState(1);
   // количество постов на страницу
-  const [firstPosts, setFirstPosts] = useState(3);
+  const [firstPosts, setFirstPosts] = useState(6);
   // вычисляем количество страниц в пагинации
   const paginationQty = Math.ceil(allPostsCat.length / firstPosts);
   // устанавливаем количество страниц в пагинации
@@ -90,33 +92,45 @@ export const CategoryPosts = ({
       xl:gap-12
       ">
         {posts.map((post, index) => (
-          <li key={post.node.title + index} className='w-full sm:w-auto'>
+          <li key={post.node.title + index} className='w-full sm:w-auto
+          hover:text-opacity-100
+          '>
             {post.node.featuredImage?.node?.sourceUrl ? (
               <>
                 <div
                   className="relative 
-                h-[482px] w-full
-                sm:inline-block sm:h-[382px] sm:w-[265px]
-                md:inline-block md:h-[382px] md:w-[265px]
-                lg:h-[482px] lg:w-[365px]
-              
+                  h-[482px] w-full
+                  sm:inline-block sm:h-[382px] sm:w-[265px]
+                  md:inline-block md:h-[382px] md:w-[265px]
+                  lg:h-[482px] lg:w-[365px]
+                  transition-all duration-300
+                  text-white
+                  text-opacity-80
+                  hover:text-opacity-100
+                  hover:brightness-125
+
               "
                 >
-                  <Image
-                    src={post.node.featuredImage?.node?.sourceUrl}
-                    alt={post.node.title}
-                    width={365}
-                    height={480}
-                    className="h-full w-full object-cover "
-                  />
-                  <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-[rgba(1,1,1,0.7)] to-transparent" />
-                  <h4
-                    className="absolute bottom-0 left-1/2 w-full
-                  -translate-x-1/2 px-4 pb-6 text-center text-xl font-normal text-white md:text-2xl
-                      "
+                  <Link href={post.node?.slug} 
+                  className=''
                   >
-                    {post.node?.title}
-                  </h4>
+
+                    <Image
+                      src={post.node.featuredImage?.node?.sourceUrl}
+                      alt={post.node.title}
+                      width={365}
+                      height={480}
+                      className="h-full w-full object-cover "
+                    />
+                    <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-[rgba(1,1,1,0.8)] to-transparent" />
+                    <h4
+                      className="absolute bottom-0 left-1/2 w-full
+                    -translate-x-1/2 px-4 pb-6 text-center text-xl font-light md:text-2xl 
+                        "
+                    >
+                      {post.node?.title}
+                    </h4>
+                  </Link>
                 </div>
               </>
             ) : null}
