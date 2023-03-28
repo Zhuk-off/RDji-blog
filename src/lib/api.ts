@@ -1,3 +1,4 @@
+import { LocationMenu } from '@/interfaces/footerHeaderRestAPIDataResponse';
 import axios from 'axios';
 import { FOOTER_HEADER_ENDPOINT } from './constants';
 
@@ -80,10 +81,70 @@ export async function getMenu() {
     }
     `
   );
+
+
+  
   return data.menus?.edges[0]?.node?.menuItems?.edges.length === 0
     ? data.menus?.edges[1]?.node?.menuItems?.edges
     : data.menus?.edges[0]?.node?.menuItems?.edges;
 }
+
+export async function getMenuByLocation(location: LocationMenu) {
+  const data = await fetchAPI(
+    `
+    query Menu($location: MenuLocationEnum = null) {
+      menus(where: {location: $location}) {
+        edges {
+          node {
+            menuItems {
+              edges {
+                node {
+                  label
+                  parentId
+                  id
+                  uri
+                  childItems {
+                    edges {
+                      node {
+                        id
+                        uri
+                        label
+                        childItems {
+                          edges {
+                            node {
+                              id
+                              uri
+                              label
+                              childItems {
+                                edges {
+                                  node {
+                                    id
+                                    label
+                                    uri
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    `,
+    {
+      variables: { location },
+    }
+  );
+  return data.menus?.edges[0]?.node?.menuItems?.edges;
+}
+
 export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
     `
@@ -454,6 +515,7 @@ export function filterSlugPages(slugs) {
         slug !== '/checkout' &&
         slug !== '/my-account' &&
         slug !== '/home' &&
+        slug !== '/about-us-information' &&
         slug !== '/glavnaya'
     );
   } else {
@@ -464,6 +526,7 @@ export function filterSlugPages(slugs) {
         slugs !== '/checkout' &&
         slugs !== '/my-account' &&
         slugs !== '/home' &&
+        slugs !== '/about-us-information' &&
         slugs !== '/glavnaya'
           ? slugs
           : null;

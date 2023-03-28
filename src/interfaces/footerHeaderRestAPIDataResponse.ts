@@ -43,10 +43,8 @@ interface IMenuItemChildren {
 }
 
 export enum LocationMenu {
-  HEADER_RU = 'HCMS_MENU_HEADER',
-  HEADER_EN = 'HCMS_MENU_HEADER___EN',
-  FOOTER_RU = 'HCMS_MENU_FOOTER',
-  FOOTER_EN = 'HCMS_MENU_FOOTER___EN',
+  HEADER_HCMS = 'HCMS_MENU_HEADER',
+  FOOTER_HCMS = 'HCMS_MENU_FOOTER',
 }
 
 /**
