@@ -163,6 +163,7 @@ export async function getAllPostsForHome(preview) {
                 node {
                   name
                   slug
+                  description
                 }
               }
             }

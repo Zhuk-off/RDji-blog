@@ -54,8 +54,6 @@ export default function Home({
   headerItemsMenu: IWPMenuItem[];
 }) {
 
-  const itemsMenu = [...headerItemsMenu]
-  console.log(headerItemsMenu);
   
   /**
    * Функции и стейт для многоуровневое меню с выпдающими списками

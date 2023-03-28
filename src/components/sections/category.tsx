@@ -10,9 +10,6 @@ export const Category = ({
   categories: string[];
   allPosts: IPostResponseShort[];
 }) => {
-  console.log(categories);
-  console.log(allPosts);
-
   const categoryCard = categories.map((cat) => {
     const post = allPosts.find(
       (post) => post.node.categories.edges[0].node.name === cat

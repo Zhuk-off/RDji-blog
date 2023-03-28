@@ -43,6 +43,7 @@ interface ICategory {
   node: {
     name: string;
     slug: string;
+    description: string;
   };
 }
 

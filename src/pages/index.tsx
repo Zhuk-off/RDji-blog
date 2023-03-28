@@ -37,7 +37,8 @@ import aboutImg from '/public/aboutImg.png';
 import { TitleBlock } from '@/components/title';
 import { About } from '@/components/sections/about';
 import { Category } from '@/components/sections/category';
-import { getCategory, getPostForCategory } from '@/lib/helpers';
+import { getCategory } from '@/lib/helpers';
+import { Projects } from '@/components/sections/projects';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 const BASE_URL = 'https://hn.algolia.com/api/v1/search?';
@@ -67,7 +68,6 @@ export default function Home({
   headerItemsMenuLeft: IWPMenuItem[];
 }) {
   const categories = getCategory(allPosts);
-
 
   /**
    * Функции и стейт для многоуровневое меню с выпдающими списками
@@ -180,10 +180,15 @@ export default function Home({
           />
           <div className="mt-10 sm:mt-12">
             <TitleBlock />
-          </div>
+          </div>  
 
           <About />
-          <Category categories={categories} allPosts={allPosts}/>
+          <Category categories={categories} allPosts={allPosts} />
+          <Projects
+            categories={categories}
+            allPosts={allPosts}
+            pagination={pagination}
+          />
         </Container>
       </main>
     </>
