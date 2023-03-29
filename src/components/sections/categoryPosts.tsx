@@ -69,7 +69,7 @@ export const CategoryPosts = ({
   ).node.description;
 
   return (
-    <div className="flex flex-col items-center">
+    <div id={catName} className="flex flex-col items-center">
       <div className="mt-14 flex justify-center gap-2">
         <h3 className="relative overflow-hidden text-ellipsis text-center text-xl font-thin uppercase text-white text-opacity-80 sm:text-3xl">
           {catName}

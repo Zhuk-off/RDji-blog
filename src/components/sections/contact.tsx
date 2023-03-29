@@ -135,7 +135,7 @@ export const Contact = () => {
 
   return (
     <section
-      id="#contact"
+      id="contacts"
       // className="bg-[#686767] pt-24 sm:pt-40 lg:pt-[250px]"
       className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]"
     >

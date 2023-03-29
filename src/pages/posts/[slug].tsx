@@ -32,7 +32,8 @@ export default function Post({
   headerItemsMenuRight,
   footerItemsMenuLeft,
   footerItemsMenuRight,
-  additionalInformationOnTheSite,
+  aboutCompanyInFooterBlock,
+  copyright,
 }: {
   post: IPostResponse;
   posts: IPostResponse[];
@@ -41,12 +42,11 @@ export default function Post({
   headerItemsMenuRight: IWPMenuItem[];
   footerItemsMenuLeft: IWPMenuItem[];
   footerItemsMenuRight: IWPMenuItem[];
-  additionalInformationOnTheSite: any;
+  aboutCompanyInFooterBlock:string,
+  copyright: string;
 }) {
   const router = useRouter();
-  console.log('post', post);
-  const { aboutCompanyInFooterBlock, aboutUsBlock, copyright } =
-    additionalInformationOnTheSite;
+  // console.log('post', post);
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -148,6 +148,9 @@ export const getStaticProps: GetStaticProps = async ({
     Math.floor(footerItemsMenu.length / 2),
     footerItemsMenu.length
   );
+
+  const { aboutCompanyInFooterBlock, copyright } =
+    additionalInformationOnTheSite;
   return {
     props: {
       preview,
@@ -157,7 +160,8 @@ export const getStaticProps: GetStaticProps = async ({
       headerItemsMenuRight,
       footerItemsMenuLeft,
       footerItemsMenuRight,
-      additionalInformationOnTheSite,
+      aboutCompanyInFooterBlock,
+      copyright,
     },
     revalidate: 10,
   };

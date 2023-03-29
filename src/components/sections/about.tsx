@@ -5,7 +5,7 @@ import droneImg from '/public/drone.svg';
 export const About = ({ aboutUsBlock }: { aboutUsBlock: string }) => {
   return (
     <section
-      id="#about"
+      id="about"
       className="mt-96 bg-gradient-to-t from-[#010101] to-transparent pt-3
         sm:mt-[550px] md:mt-[700px] lg:mt-[900px] xl:mt-[650px]"
     >

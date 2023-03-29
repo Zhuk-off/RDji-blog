@@ -50,7 +50,7 @@ export const Category = ({
   });
 
   return (
-    <section id="#about" className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]">
+    <section id="categories" className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]">
       <div className="flex gap-2 justify-center">
         <h2 className="uppercase text-center relative text-white text-3xl sm:text-4xl font-semibold text-ellipsis overflow-hidden">
           Welcome to our blog <br />{' '}

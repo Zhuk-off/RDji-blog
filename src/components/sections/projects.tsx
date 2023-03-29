@@ -64,7 +64,7 @@ export const Projects = ({
  
   return (
     <section
-      id="#projects"
+      id="projects"
       className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]"
     >
       <div className="flex gap-2 justify-center">

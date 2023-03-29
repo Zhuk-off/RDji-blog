@@ -28,36 +28,52 @@ export const Header1 = ({
   return (
     <header className="w-full">
       <menu
-        className="hidden md:flex justify-between items-center flex-nowrap whitespace-nowrap
-      font-bold text-base p-10"
+        className="hidden flex-nowrap items-center justify-between whitespace-nowrap p-10
+      text-base font-bold md:flex"
       >
+        {/* itemMenu.node.uri */}
         {headerItemsMenuLeft.map((itemMenu) => (
+
           <Link
-            href={itemMenu.node.uri}
+            href={{ pathname:'/', hash:itemMenu.node.uri}}
             key={itemMenu.node.id}
-            className="uppercase text-white text-opacity-70 hover:text-opacity-100 transition"
+            scroll={false}
+            className="uppercase text-white text-opacity-70 transition hover:text-opacity-100"
           >
             {itemMenu.node.label}
           </Link>
         ))}
-        <Link href={'/'}>
-          <Image src={logo} alt={'RDji_logo'} width={100} height={100} className='opacity-80 hover:opacity-100 transition'/>
+        <Link href={'/'} scroll={false}>
+          <Image
+            src={logo}
+            alt={'RDji_logo'}
+            width={100}
+            height={100}
+            className="opacity-80 transition hover:opacity-100"
+          />
         </Link>
         {headerItemsMenuRight.map((itemMenu) => (
           <Link
+            scroll={false}
             href={itemMenu.node.uri}
             key={itemMenu.node.id}
-            className="uppercase text-white text-opacity-70 hover:text-opacity-100 transition"
+            className="uppercase text-white text-opacity-70 transition hover:text-opacity-100"
           >
             {itemMenu.node.label}
           </Link>
         ))}
       </menu>
-      <menu className="flex justify-between md:hidden pt-4">
+      <menu className="flex justify-between pt-4 md:hidden">
         <li>
-        <Link href={'/'} className='block'>
-          <Image src={logo} alt={'RDji_logo'} width={100} height={70} className='opacity-80 ml-2'/>
-        </Link>
+          <Link href={'/'} className="block" >
+            <Image
+              src={logo}
+              alt={'RDji_logo'}
+              width={100}
+              height={70}
+              className="ml-2 opacity-80"
+            />
+          </Link>
         </li>
 
         <li>
