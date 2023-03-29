@@ -25,8 +25,9 @@ export const Projects = ({
   allPosts: IPostResponseShort[];
   pagination: IPagination;
 }) => {
+  
   // Выводимые посты на страницу
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([...allPosts]);
   // строка поиска
   const [query, setQuery] = useState('');
   // текущая страница пагинации
@@ -37,31 +38,32 @@ export const Projects = ({
   const paginationQty = Math.ceil(pagination.edges.length / firstPosts);
   // устанавливаем количество страниц в пагинации
   const [pageQty, setPageQty] = useState(paginationQty);
-
+  
   useEffect(() => {
     /**
      * Поиск по массиву с выводом результатов и пагинацией результатов
-     *
-     */
-    const newPostsSearch = allPosts.filter((item) =>
-      item.node.title.toLowerCase().includes(query.toLowerCase())
-    );
-
-    setPosts(newPostsSearch);
-  
+    *
+    */
+   const newPostsSearch = allPosts.filter((item) =>
+   item.node.title.toLowerCase().includes(query.toLowerCase())
+   );
+   
+   setPosts(newPostsSearch);
+   
   }, [allPosts, query]);
-
+  
   // Отсортируем посты по категориям. Создадим объект с категориями и массивами постов
   const postByCat = {};
   categories.forEach((cat) => (postByCat[cat] = []));
   categories.forEach((cat) =>
-    posts.forEach((post) =>
-      post.node.categories?.edges.forEach((postInCat) =>
-        postInCat.node.name === cat ? postByCat[cat].push(post) : null
-      )
-    )
+  posts.forEach((post) =>
+  post.node.categories?.edges.forEach((postInCat) =>
+  postInCat.node.name === cat ? postByCat[cat].push(post) : null
+  )
+  )
   );
- 
+  
+  console.log(posts.length);
   return (
     <section
       id="projects"

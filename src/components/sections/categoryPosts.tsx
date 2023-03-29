@@ -30,8 +30,11 @@ export const CategoryPosts = ({
   allPostsCat: IPostResponseShort[];
   catName: string;
 }) => {
+console.log('catName',catName?.toLocaleLowerCase());
+
+
   // Выводимые посты на страницу
-  const [posts, setPosts] = useState<IPostResponseShort[]>([]);
+  const [posts, setPosts] = useState<IPostResponseShort[]>([...allPostsCat]);
   // строка поиска
   const [query, setQuery] = useState('');
   // текущая страница пагинации
@@ -69,7 +72,7 @@ export const CategoryPosts = ({
   ).node.description;
 
   return (
-    <div id={catName} className="flex flex-col items-center">
+    <div id={catName?.toLocaleLowerCase()} className="flex flex-col items-center">
       <div className="mt-14 flex justify-center gap-2">
         <h3 className="relative overflow-hidden text-ellipsis text-center text-xl font-thin uppercase text-white text-opacity-80 sm:text-3xl">
           {catName}

@@ -33,9 +33,8 @@ export const Header1 = ({
       >
         {/* itemMenu.node.uri */}
         {headerItemsMenuLeft.map((itemMenu) => (
-
           <Link
-            href={{ pathname:'/', hash:itemMenu.node.uri}}
+            href={itemMenu.node.uri}
             key={itemMenu.node.id}
             scroll={false}
             className="uppercase text-white text-opacity-70 transition hover:text-opacity-100"
@@ -55,7 +54,7 @@ export const Header1 = ({
         {headerItemsMenuRight.map((itemMenu) => (
           <Link
             scroll={false}
-            href={itemMenu.node.uri}
+            href={`${itemMenu.node.uri}`}
             key={itemMenu.node.id}
             className="uppercase text-white text-opacity-70 transition hover:text-opacity-100"
           >
@@ -65,7 +64,7 @@ export const Header1 = ({
       </menu>
       <menu className="flex justify-between pt-4 md:hidden">
         <li>
-          <Link href={'/'} className="block" >
+          <Link href={'/'} className="block">
             <Image
               src={logo}
               alt={'RDji_logo'}
