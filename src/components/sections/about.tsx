@@ -7,10 +7,10 @@ export const About = ({ aboutUsBlock }: { aboutUsBlock: string }) => {
     <section
       id="#about"
       className="mt-96 bg-gradient-to-t from-[#010101] to-transparent pt-3
-sm:mt-[550px] md:mt-[700px] lg:mt-[900px] xl:mt-[650px]"
+        sm:mt-[550px] md:mt-[700px] lg:mt-[900px] xl:mt-[650px]"
     >
       <div className="flex justify-center gap-2">
-        <h2 className="relative text-center text-3xl font-semibold uppercase text-white sm:text-4xl">
+        <h2 className="relative overflow-hidden text-ellipsis text-center text-3xl font-semibold uppercase text-white sm:text-4xl">
           About Us
         </h2>
         <Image
@@ -30,7 +30,7 @@ sm:mt-[550px] md:mt-[700px] lg:mt-[900px] xl:mt-[650px]"
           className="object-contain sm:w-[300px] md:w-[400px] lg:w-[500px]"
         />
         <p
-          className="max-w-xl self-center text-base font-normal leading-relaxed text-white text-opacity-80 lg:text-xl"
+          className="max-w-xl self-center overflow-hidden text-ellipsis text-base font-normal leading-relaxed text-white text-opacity-80 lg:text-xl"
           dangerouslySetInnerHTML={{
             __html:
               aboutUsBlock && typeof aboutUsBlock === 'string'

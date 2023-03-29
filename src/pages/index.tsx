@@ -65,7 +65,6 @@ export default function Home({
   additionalInformationOnTheSite: any;
 }) {
   const categories = getCategory(allPosts);
-  console.log(additionalInformationOnTheSite);
 
   const { aboutCompanyInFooterBlock, aboutUsBlock, copyright } =
     additionalInformationOnTheSite;

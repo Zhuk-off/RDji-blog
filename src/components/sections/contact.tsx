@@ -151,13 +151,13 @@ export const Contact = () => {
           className="self-start opacity-80"
         />
       </div>
-      <div className="mt-10 flex flex-col items-center justify-center gap-10 sm:flex-row lg:mt-20 lg:gap-20">
+      <div className="mt-10 flex flex-col items-center justify-center gap-10 sm:flex-row sm:gap-5 lg:mt-20 lg:gap-20">
         <Image
           src={aboutImg}
           alt={'about'}
           width={600}
           height={490}
-          className="hidden object-contain sm:block sm:w-[300px] md:w-[400px] lg:w-[500px]"
+          className="hidden object-contain sm:block sm:w-[200px] md:w-[300px] lg:w-[500px]"
         />
         <div className="flex min-w-[290px] flex-col gap-5 sm:min-w-[350px]">
           <Box

@@ -37,7 +37,7 @@ export const Category = ({
               <div className="w-full h-1/2 absolute bottom-0 left-0 bg-gradient-to-t from-[#010101] to-transparent" />
               <h3
                 className="absolute bottom-10 left-1/2 -translate-x-1/2
-                text-2xl md:text-4xl uppercase text-white
+                text-2xl md:text-4xl uppercase text-white text-ellipsis overflow-hidden
                     "
               >
                 {post.node.categories.edges[0].node.name}
@@ -52,7 +52,7 @@ export const Category = ({
   return (
     <section id="#about" className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]">
       <div className="flex gap-2 justify-center">
-        <h2 className="uppercase text-center relative text-white text-3xl sm:text-4xl font-semibold">
+        <h2 className="uppercase text-center relative text-white text-3xl sm:text-4xl font-semibold text-ellipsis overflow-hidden">
           Welcome to our blog <br />{' '}
           <span className="font-thin mt-2 block">Let&rsquo;s fly together</span>
         </h2>

@@ -71,7 +71,7 @@ export const CategoryPosts = ({
   return (
     <div className="flex flex-col items-center">
       <div className="mt-14 flex justify-center gap-2">
-        <h3 className="relative text-center text-xl font-thin uppercase text-white text-opacity-80 sm:text-3xl">
+        <h3 className="relative overflow-hidden text-ellipsis text-center text-xl font-thin uppercase text-white text-opacity-80 sm:text-3xl">
           {catName}
         </h3>
         <Image
@@ -82,39 +82,53 @@ export const CategoryPosts = ({
           className="self-start opacity-80"
         />
       </div>
-      <p className="mt-5 block max-w-xl text-center text-base font-thin leading-relaxed text-opacity-70">
+      <p className="mt-5 block max-w-xl overflow-hidden text-ellipsis text-center text-base font-thin leading-relaxed text-opacity-70">
         {description ? description : null}
       </p>
-      <ul className="mt-12 flex flex-wrap justify-center gap-5
+      {/* {!!pageQty && (
+        <PaginationWhite
+          count={pageQty}
+          page={page}
+          onChange={(_, num) => setPage(num)}
+          showFirstButton
+          showLastButton
+          color="primary"
+          sx={{ marginY: 3, marginX: 'auto' }}
+          className="mt-5"
+        />
+      )} */}
+      <ul
+        className="mt-10 flex flex-wrap justify-center gap-5
       sm:gap-5
       md:gap-7
       lg:gap-10
       xl:gap-12
-      ">
+      "
+      >
         {posts.map((post, index) => (
-          <li key={post.node.title + index} className='w-full sm:w-auto
-          hover:text-opacity-100
-          '>
+          <li
+            key={post.node.title + index}
+            className="w-full hover:text-opacity-100
+          sm:w-auto
+          "
+          >
             {post.node.featuredImage?.node?.sourceUrl ? (
               <>
                 <div
                   className="relative 
                   h-[482px] w-full
-                  sm:inline-block sm:h-[382px] sm:w-[265px]
-                  md:inline-block md:h-[382px] md:w-[265px]
-                  lg:h-[482px] lg:w-[365px]
-                  transition-all duration-300
-                  text-white
-                  text-opacity-80
-                  hover:text-opacity-100
-                  hover:brightness-125
+                  text-white text-opacity-80 transition-all
+                  duration-300 hover:text-opacity-100 hover:brightness-125
+                  sm:inline-block sm:h-[382px]
+                  sm:w-[265px] md:inline-block
+                  md:h-[382px]
+                  md:w-[265px]
+                  lg:h-[482px]
+                  lg:w-[365px]
 
               "
                 >
-                  <Link href={post.node?.slug} 
-                  className=''
-                  >
-
+                  <Link href={`/posts/${post.node?.slug}`} className="">
                     <Image
                       src={post.node.featuredImage?.node?.sourceUrl}
                       alt={post.node.title}
@@ -125,7 +139,7 @@ export const CategoryPosts = ({
                     <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-[rgba(1,1,1,0.8)] to-transparent" />
                     <h4
                       className="absolute bottom-0 left-1/2 w-full
-                    -translate-x-1/2 px-4 pb-6 text-center text-xl font-light md:text-2xl 
+                    -translate-x-1/2 overflow-hidden text-ellipsis px-4 pb-6 text-center text-xl font-light md:text-2xl
                         "
                     >
                       {post.node?.title}

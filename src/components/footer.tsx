@@ -33,7 +33,7 @@ export const Footer = ({
           </Link>
 
           <p
-            className="max-w-xs text-base font-normal uppercase"
+            className="max-w-xs text-base font-normal uppercase text-ellipsis overflow-hidden"
             dangerouslySetInnerHTML={{
               __html:
                 aboutCompanyInFooterBlock &&
