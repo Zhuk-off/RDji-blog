@@ -1,6 +1,7 @@
 import { IPostResponseShort } from '@/interfaces/posts.interfaces';
 import { DEFAULT_IMG_URL } from '@/lib/constants';
 import Image from 'next/image';
+import Link from 'next/link';
 import aboutImg from '/public/aboutImg.png';
 import droneImg from '/public/drone.svg';
 
@@ -21,27 +22,31 @@ export const Category = ({
         {post.node.featuredImage?.node?.sourceUrl ? (
           <>
             <div
-              className="relative md:inline-block 
-              w-max-[365px] h-[482px]
-              md:w-[365px] md:h-[482px]
-              max-w-[365px]
+              className="w-max-[365px] relative 
+              h-[482px] max-w-[365px] text-white
+              text-opacity-80 transition-all
+              hover:text-opacity-100 hover:brightness-125
+              md:inline-block
+              md:h-[482px] md:w-[365px]
             "
             >
-              <Image
-                src={post.node.featuredImage?.node?.sourceUrl}
-                alt={cat}
-                width={365}
-                height={480}
-                className="object-cover w-full h-full "
-              />
-              <div className="w-full h-1/2 absolute bottom-0 left-0 bg-gradient-to-t from-[#010101] to-transparent" />
-              <h3
-                className="absolute bottom-10 left-1/2 -translate-x-1/2
-                text-2xl md:text-4xl uppercase text-white text-ellipsis overflow-hidden
+              <Link href={`/#${post.node.categories?.edges[0].node.name?.toLocaleLowerCase()}`} className="">
+                <Image
+                  src={post.node.featuredImage?.node?.sourceUrl}
+                  alt={cat}
+                  width={365}
+                  height={480}
+                  className="h-full w-full object-cover "
+                />
+                <div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-[#010101] to-transparent" />
+                <h3
+                  className="absolute bottom-10 left-1/2 -translate-x-1/2
+                overflow-hidden text-ellipsis text-2xl uppercase md:text-4xl
                     "
-              >
-                {post.node.categories.edges[0].node.name}
-              </h3>
+                >
+                  {post.node.categories.edges[0].node.name}
+                </h3>
+              </Link>
             </div>
           </>
         ) : null}
@@ -50,18 +55,21 @@ export const Category = ({
   });
 
   return (
-    <section id="categories" className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]">
-      <div className="flex gap-2 justify-center">
-        <h2 className="uppercase text-center relative text-white text-3xl sm:text-4xl font-semibold text-ellipsis overflow-hidden">
+    <section
+      id="categories"
+      className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]"
+    >
+      <div className="flex justify-center gap-2">
+        <h2 className="relative overflow-hidden text-ellipsis text-center text-3xl font-semibold uppercase text-white sm:text-4xl">
           Welcome to our blog <br />{' '}
-          <span className="font-thin mt-2 block">Let&rsquo;s fly together</span>
+          <span className="mt-2 block font-thin">Let&rsquo;s fly together</span>
         </h2>
         <Image
           src={droneImg}
           alt={'drone'}
           width={20}
           height={20}
-          className="opacity-80 self-start"
+          className="self-start opacity-80"
         />
       </div>
 

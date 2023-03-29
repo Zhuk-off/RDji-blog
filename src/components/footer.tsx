@@ -17,7 +17,7 @@ export const Footer = ({
   return (
     <footer
       id="#footer"
-      className="bg-[#010101] pt-24 text-white text-opacity-70 sm:pt-40 lg:pt-[250px]"
+      className="bg-[#010101] pt-24 text-white sm:pt-40 lg:pt-[250px]"
     >
       <div className="h-[1px] w-full bg-[#242424]" />
       <div className="mx-auto mt-12 flex max-w-4xl flex-col items-center gap-10 sm:flex-row sm:justify-between sm:gap-5">
@@ -28,12 +28,12 @@ export const Footer = ({
               alt={'RDji_logo'}
               width={100}
               height={100}
-              className="opacity-80 transition hover:opacity-100"
+              className="opacity-70 transition hover:opacity-100"
             />
           </Link>
 
           <p
-            className="max-w-xs text-base font-normal uppercase text-ellipsis overflow-hidden"
+            className="max-w-xs overflow-hidden text-ellipsis text-base font-normal uppercase opacity-70"
             dangerouslySetInnerHTML={{
               __html:
                 aboutCompanyInFooterBlock &&
@@ -43,11 +43,14 @@ export const Footer = ({
             }}
           />
         </div>
-        <div className="">
+        <div>
           <menu className="flex flex-col items-center gap-4 sm:items-start">
             {footerItemsMenuLeft?.length !== 0
               ? footerItemsMenuLeft.map((item) => (
-                  <li key={item.node.id} className="font-bold uppercase">
+                  <li
+                    key={item.node.id}
+                    className="font-bold uppercase opacity-70 transition hover:opacity-100"
+                  >
                     <Link href={item.node.uri}>{item.node.label}</Link>
                   </li>
                 ))
@@ -58,7 +61,10 @@ export const Footer = ({
           <menu className="flex flex-col items-center gap-4 sm:items-start">
             {footerItemsMenuRight?.length !== 0
               ? footerItemsMenuRight.map((item) => (
-                  <li key={item.node.id} className="font-bold uppercase">
+                  <li
+                    key={item.node.id}
+                    className="font-bold uppercase opacity-70 transition hover:opacity-100"
+                  >
                     <Link href={item.node.uri}>{item.node.label}</Link>
                   </li>
                 ))
@@ -67,7 +73,7 @@ export const Footer = ({
         </div>
       </div>
       <p
-        className="mt-12 pb-2 text-center"
+        className="mt-12 pb-2 text-center opacity-70"
         dangerouslySetInnerHTML={{
           __html: copyright && typeof copyright === 'string' ? copyright : null,
         }}

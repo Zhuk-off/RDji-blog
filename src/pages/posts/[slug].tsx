@@ -42,7 +42,7 @@ export default function Post({
   headerItemsMenuRight: IWPMenuItem[];
   footerItemsMenuLeft: IWPMenuItem[];
   footerItemsMenuRight: IWPMenuItem[];
-  aboutCompanyInFooterBlock:string,
+  aboutCompanyInFooterBlock: string;
   copyright: string;
 }) {
   const router = useRouter();
@@ -64,10 +64,9 @@ export default function Post({
       ) : (
         <>
           <article
-            className={`${openSans.className} relative bg-[#010101] 
-      `}
+            className={`${openSans.className} relative bg-[#010101] overflow-hidden`}
           >
-            <div className=" absolute h-screen w-screen overflow-hidden">
+            <div className="absolute h-screen w-screen overflow-hidden">
               <Image
                 src={post.featuredImage?.node.sourceUrl}
                 alt={'background'}
@@ -93,9 +92,6 @@ export default function Post({
                   className={`${styles.content} relative -top-40 left-0 bottom-0 mx-auto 
                 max-w-2xl overflow-hidden text-ellipsis bg-gradient-to-t from-[#010101]
                 to-transparent text-white text-opacity-80
-                
-                 
-                
                 `}
                   dangerouslySetInnerHTML={{
                     __html:
@@ -131,7 +127,7 @@ export const getStaticProps: GetStaticProps = async ({
   const pages = await getAllPagesSlug();
   const additionalInformationOnTheSite = pages?.edges[0].node.siteInformation;
   const headerItemsMenu = await getMenuByLocation(LocationMenu.HEADER_HCMS);
-  const footerItemsMenu = await getMenuByLocation(LocationMenu.HEADER_HCMS);
+  const footerItemsMenu = await getMenuByLocation(LocationMenu.FOOTER_HCMS);
   const headerItemsMenuLeft = headerItemsMenu.slice(
     0,
     Math.floor(headerItemsMenu.length / 2)

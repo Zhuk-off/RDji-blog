@@ -118,7 +118,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const additionalInformationOnTheSite = pages?.edges[0].node.siteInformation;
   const pagination = await getPostsPagination(100000, '');
   const headerItemsMenu = await getMenuByLocation(LocationMenu.HEADER_HCMS);
-  const footerItemsMenu = await getMenuByLocation(LocationMenu.HEADER_HCMS);
+  const footerItemsMenu = await getMenuByLocation(LocationMenu.FOOTER_HCMS);
   const headerItemsMenuLeft = headerItemsMenu.slice(
     0,
     Math.floor(headerItemsMenu.length / 2)
@@ -135,6 +135,8 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     Math.floor(footerItemsMenu.length / 2),
     footerItemsMenu.length
   );
+
+  
 
   const footerHeaderData = await getFooterHeaderRestAPIData();
   const header = footerHeaderData ? footerHeaderData.data.header : null;
