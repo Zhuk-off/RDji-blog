@@ -1,8 +1,6 @@
 import { IPostResponseShort } from '@/interfaces/posts.interfaces';
-import { DEFAULT_IMG_URL } from '@/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import aboutImg from '/public/aboutImg.png';
 import droneImg from '/public/drone.svg';
 
 export const Category = ({

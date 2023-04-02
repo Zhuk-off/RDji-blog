@@ -48,14 +48,14 @@ export default async function handler(req, res) {
             // Return 200 if everything is successful
             await transporter.sendMail({
               ...mailOptions,
-              subject: `Заявка с сайта от ${sendData.name}`,
+              subject: `Request from PORTFOLIO ${sendData.name}`,
               text: 'text',
               html: `
-        <h1>Заявка с сайта от ${sendData.name}</h1>
-        <p>Имя: ${sendData.name}</p>
-        <p>Телефон: ${sendData.phone}</p>
+        <h1>Request from PORTFOLIO ${sendData.name}</h1>
+        <p>Name: ${sendData.name}</p>
+        <p>Phone: ${sendData.phone}</p>
         <p>Email: ${sendData.email}</p>
-        <p>Дополнительная информация: ${sendData.info}</p>
+        <p>Message: ${sendData.info}</p>
         `,
             });
 

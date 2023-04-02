@@ -28,7 +28,7 @@ export const Header1 = ({
   return (
     <header className="w-full">
       <menu
-        className="hidden flex-nowrap items-center justify-between whitespace-nowrap p-10
+        className="hidden flex-nowrap items-center justify-between whitespace-nowrap p-10 custombp:p-5
       text-base font-bold md:flex"
       >
         {/* itemMenu.node.uri */}

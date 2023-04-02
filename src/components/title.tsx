@@ -16,10 +16,10 @@ export const TitleBlock = () => {
         Learn about our projects
       </div>
       <div className="flex justify-center mt-5 gap-5">
-        <Button variant="outlined" className="rounded-full" size="medium">
+        <Button variant="outlined" className="rounded-full" size="medium" href='#categories'>
           <span className="px-6">read</span>
         </Button>
-        <Button variant="outlined" className="rounded-full" size="medium">
+        <Button variant="outlined" className="rounded-full" size="medium" href='#projects'>
           <span className="px-6">more</span>
         </Button>
       </div>

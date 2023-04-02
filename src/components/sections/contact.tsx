@@ -94,9 +94,8 @@ export const Contact = () => {
     inputProps: { 'aria-label': 'Switch agree with privacy policy' },
   };
 
-
-    // We use for invisible Recaptcha
-    const recaptchaRef = useRef(null);
+  // We use for invisible Recaptcha
+  const recaptchaRef = useRef(null);
 
   // ReCapture
   const onReCAPTCHAChange = async (captchaCode) => {
@@ -136,7 +135,6 @@ export const Contact = () => {
   return (
     <section
       id="contacts"
-      // className="bg-[#686767] pt-24 sm:pt-40 lg:pt-[250px]"
       className="bg-[#010101] pt-24 sm:pt-40 lg:pt-[250px]"
     >
       <div className="flex justify-center gap-2">
@@ -174,25 +172,16 @@ export const Contact = () => {
               required
               {...errorName}
               label="Name"
-              // id="custom-css-outlined-input"
               variant="standard"
               sx={{ input: { color: 'white' } }}
-              // value={query}
-              // onChange={(event) => setQuery(event.target.value)}
-              className=""
-              
             />
             <FindWhiteTextField
               {...register('email')}
               id="email"
               type={'email'}
               label="Email Address"
-              // id="custom-css-outlined-input"
               variant="standard"
               sx={{ input: { color: 'white' } }}
-              // value={query}
-              // onChange={(event) => setQuery(event.target.value)}
-              className=""
             />
             <FindWhiteTextField
               label="Phone Number"
@@ -203,24 +192,16 @@ export const Contact = () => {
               })}
               id="phone"
               type={'tel'}
-              // id="custom-css-outlined-input"  required
               {...errorPhone}
               variant="standard"
               sx={{ input: { color: 'white' } }}
-              // value={query}
-              // onChange={(event) => setQuery(event.target.value)}
-              className=""
             />
             <FindWhiteTextField
               {...register('info')}
               label="Message"
               id="info"
-              // id="custom-css-outlined-input"
               variant="standard"
               sx={{ input: { color: 'white' } }}
-              // value={query}
-              // onChange={(event) => setQuery(event.target.value)}
-              className=""
               multiline
             />
             <div {...errorPolicy}>
@@ -255,12 +236,12 @@ export const Contact = () => {
               send
             </Button>
             <ReCAPTCHA
-        ref={recaptchaRef}
-        size="invisible"
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-        onChange={onReCAPTCHAChange}
-        className="invisible absolute z-30 lg:visible"
-      /> 
+              ref={recaptchaRef}
+              size="invisible"
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              onChange={onReCAPTCHAChange}
+              className="invisible absolute z-30 lg:visible"
+            />
           </Box>
         </div>
       </div>

@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import droneImg from '/public/drone.svg';
 import { alpha, styled } from '@mui/material/styles';
 import Link from 'next/link';
-import { DEFAULT_IMG_URL } from '@/lib/constants';
 
 const PaginationWhite = styled(Pagination)({
   '& button.MuiPaginationItem-textPrimary': {
@@ -30,8 +29,6 @@ export const CategoryPosts = ({
   allPostsCat: IPostResponseShort[];
   catName: string;
 }) => {
-console.log('catName',catName?.toLocaleLowerCase());
-
 
   // Выводимые посты на страницу
   const [posts, setPosts] = useState<IPostResponseShort[]>([...allPostsCat]);

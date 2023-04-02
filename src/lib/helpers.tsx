@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
 
-
 /** Use to modify page URLs from backend to frontend.
  * The default WordPress tools don't work.
  * When creating a post, an error occurs in WordPress. */
@@ -55,7 +54,6 @@ export const getCategory = (allPosts: IPostResponseShort[]) => {
   return filteredByUncategorized;
 };
 
-
 export const FindWhiteTextField = styled(TextField)({
   '& label.Mui-focused': {
     color: '#fff',
@@ -70,21 +68,41 @@ export const FindWhiteTextField = styled(TextField)({
     color: '#A6A2A4',
   },
   // multi text color
-  '& .MuiInputBase-input.MuiInput-input.MuiInputBase-inputMultiline.css-66dh3a-MuiInputBase-input-MuiInput-input': {
-    color: '#fff',
-  },
-  // multi border noHover
+  '& .MuiInputBase-input.MuiInput-input.MuiInputBase-inputMultiline.css-66dh3a-MuiInputBase-input-MuiInput-input':
+    {
+      color: '#fff',
+    },
+  // multiInput border noHover
   '& .css-94tsml-MuiInputBase-root-MuiInput-root:before': {
     borderBottomColor: '#A6A2A4',
   },
-  // multi border noHover
-  '& .css-94tsml-MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled, .Mui-error):before': {
-    borderBottomColor: '#A6A2A4',
-  },
+  // multiInput border noHover
+  '& .css-94tsml-MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled, .Mui-error):before':
+    {
+      borderBottomColor: '#A6A2A4',
+    },
   '& .css-1g30tq1-MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled, .Mui-error):before':
     {
       borderBottomColor: '#A6A2A4',
     },
+  // multiInput production border Hover
+  '& .css-1iq580w:hover:not(.Mui-disabled, .Mui-error):before': {
+    borderBottomColor: '#A6A2A4',
+  },
+  // multiInput production border noHover
+  '& .css-1iq580w:before': {
+    borderBottomColor: '#A6A2A4',
+  },
+
+  // production border Hover Input
+  '& .css-1svbilp:hover:not(.Mui-disabled, .Mui-error):before': {
+    borderBottomColor: '#A6A2A4',
+  },
+  // production border noHover Input
+  '& .css-1svbilp:before': {
+    borderBottomColor: '#A6A2A4',
+  },
+
   '& .css-1g30tq1-MuiInputBase-root-MuiInput-root:before': {
     borderBottomColor: '#A6A2A4',
   },

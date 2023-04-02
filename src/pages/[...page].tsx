@@ -1,8 +1,4 @@
-import {
-  IFooter,
-  IHeader,
-  IHeaderFooterContext,
-} from '@/interfaces/footerHeaderRestAPIDataResponse';
+import { IFooter, IHeader } from '@/interfaces/footerHeaderRestAPIDataResponse';
 import { IPageResponse } from '@/interfaces/pages.interfaces';
 import {
   getAllPagesSlug,
@@ -10,7 +6,6 @@ import {
   getPageByUri,
 } from '@/lib/api';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -53,6 +48,8 @@ const Page = ({
         title={page?.seo?.title}
         description={page?.seo?.metaDesc}
         canonical={page?.seo?.canonical}
+        noindex
+        nofollow
       />
       {/* <Head>
         <title>Create Next App</title>

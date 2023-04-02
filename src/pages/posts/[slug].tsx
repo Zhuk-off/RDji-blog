@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import {
   getAllPagesSlug,
@@ -56,8 +55,10 @@ export default function Post({
     <>
       <NextSeo
         title={post?.seo?.title}
-        description={post?.seo?.metaDesc}
+        description={post?.seo?.metaDesc || post?.seo?.title}
         canonical={post?.seo?.canonical}
+        noindex
+        nofollow
       />
       {router.isFallback ? (
         <p>Loading…</p>
@@ -77,7 +78,7 @@ export default function Post({
               <div className="absolute bottom-0 left-0 h-1/3 w-full bg-gradient-to-t from-[#010101] to-transparent"></div>
             </div>
             <Container>
-              <div className="  relative h-screen">
+              <div className="relative h-screen">
                 <Header1
                   headerItemsMenuLeft={headerItemsMenuLeft}
                   headerItemsMenuRight={headerItemsMenuRight}
@@ -89,7 +90,7 @@ export default function Post({
               </div>
               <div className="relative min-h-screen">
                 <div
-                  className={`${styles.content} relative -top-40 left-0 bottom-0 mx-auto 
+                  className={`${styles.content} relative -top-40 left-0 custombp:top-0 mx-auto 
                 max-w-2xl overflow-hidden text-ellipsis bg-gradient-to-t from-[#010101]
                 to-transparent text-white text-opacity-80
                 `}
