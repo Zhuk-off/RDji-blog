@@ -4,7 +4,6 @@ import {
   getAllPagesSlug,
   getAllPostsForHome,
   getFooterHeaderRestAPIData,
-  getMenu,
   getMenuByLocation,
   getPostsPagination,
 } from '@/lib/api';
@@ -17,7 +16,6 @@ import {
 import { IPagination, IPostResponseShort } from '@/interfaces/posts.interfaces';
 import type { Metadata } from 'next';
 import { NextSeo } from 'next-seo';
-import { Fragment, useEffect, useState } from 'react';
 import * as React from 'react';
 import { Header1 } from '@/components/header';
 import logo from '/public/bg_home.webp';
@@ -82,7 +80,7 @@ export default function Home({
       `}
       >
         <div className="absolute z-10">
-          <Image src={logo} alt={'background'} className=" " />
+          <Image src={logo} alt={'background'} className="lg:h-[1200px] object-cover" />
           <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-[#010101] to-transparent"></div>
         </div>
         <Container>

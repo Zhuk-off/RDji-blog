@@ -1,4 +1,4 @@
-import { FindWhiteTextField } from '@/lib/helpers';
+import { FindWhiteSwitch, FindWhiteTextField } from '@/lib/helpers';
 import { Box, Button, Switch } from '@mui/material';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
@@ -149,102 +149,110 @@ export const Contact = () => {
           className="self-start opacity-80"
         />
       </div>
-      <div className="mt-10 flex flex-col items-center justify-center gap-10 sm:flex-row sm:gap-5 lg:mt-20 lg:gap-20">
-        <Image
-          src={aboutImg}
-          alt={'about'}
-          width={600}
-          height={490}
-          className="hidden object-contain sm:block sm:w-[200px] md:w-[300px] lg:w-[500px]"
-        />
-        <div className="flex min-w-[290px] flex-col gap-5 sm:min-w-[350px]">
-          <Box
-            component={'form'}
-            className="screen-box-shadow-all grid gap-5 p-10 text-2xl text-black"
-            action="/api/form"
-            method="post"
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate
-          >
-            <FindWhiteTextField
-              {...register('name', { required: true, minLength: 2 })}
-              id="name"
-              required
-              {...errorName}
-              label="Name"
-              variant="standard"
-              sx={{ input: { color: 'white' } }}
-            />
-            <FindWhiteTextField
-              {...register('email')}
-              id="email"
-              type={'email'}
-              label="Email Address"
-              variant="standard"
-              sx={{ input: { color: 'white' } }}
-            />
-            <FindWhiteTextField
-              label="Phone Number"
-              {...register('phone', {
-                required: true,
-                minLength: 7,
-                pattern: /^[0-9+\-()\s]+$/,
-              })}
-              id="phone"
-              type={'tel'}
-              {...errorPhone}
-              variant="standard"
-              sx={{ input: { color: 'white' } }}
-            />
-            <FindWhiteTextField
-              {...register('info')}
-              label="Message"
-              id="info"
-              variant="standard"
-              sx={{ input: { color: 'white' } }}
-              multiline
-            />
-            <div {...errorPolicy}>
-              <div className="flex items-center">
-                <Switch
-                  {...register('policy', { required: true })}
-                  id="policy"
-                  {...label}
-                  color="primary"
-                  required
-                />
-
-                <p className="font-roboto-regular text-sm text-white text-opacity-80 ">
-                  I agree to the{' '}
-                  <Link
-                    href={'/privacy-policy/'}
-                    className="text-white text-opacity-80 underline "
-                    target={'_blank'}
-                  >
-                    Privacy Policy
-                  </Link>
-                </p>
-              </div>
-            </div>
-
-            <Button
-              variant="outlined"
-              className="rounded-full px-6"
-              size="medium"
-              type={'submit'}
+      {!send ? (
+        <div className="mt-10 flex flex-col items-center justify-center gap-10 sm:flex-row sm:gap-5 lg:mt-20 lg:gap-20">
+          <Image
+            src={aboutImg}
+            alt={'about'}
+            width={600}
+            height={490}
+            className="hidden object-contain sm:block sm:w-[200px] md:w-[300px] lg:w-[500px]"
+          />
+          <div className="flex min-w-[290px] flex-col gap-5 sm:min-w-[350px]">
+            <Box
+              component={'form'}
+              className="screen-box-shadow-all grid gap-5 p-10 text-2xl text-black"
+              action="/api/form"
+              method="post"
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
             >
-              send
-            </Button>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              size="invisible"
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              onChange={onReCAPTCHAChange}
-              className="invisible absolute z-30 lg:visible"
-            />
-          </Box>
+              <FindWhiteTextField
+                {...register('name', { required: true, minLength: 2 })}
+                id="name"
+                required
+                {...errorName}
+                label="Name"
+                variant="standard"
+                sx={{ input: { color: 'white' } }}
+              />
+              <FindWhiteTextField
+                {...register('email')}
+                id="email"
+                type={'email'}
+                label="Email Address"
+                variant="standard"
+                sx={{ input: { color: 'white' } }}
+              />
+              <FindWhiteTextField
+                label="Phone Number"
+                {...register('phone', {
+                  required: true,
+                  minLength: 7,
+                  pattern: /^[0-9+\-()\s]+$/,
+                })}
+                id="phone"
+                type={'tel'}
+                {...errorPhone}
+                variant="standard"
+                sx={{ input: { color: 'white' } }}
+              />
+              <FindWhiteTextField
+                {...register('info')}
+                label="Message"
+                id="info"
+                variant="standard"
+                sx={{ input: { color: 'white' } }}
+                multiline
+                className='text-red'
+              />
+              <div {...errorPolicy}>
+                <div className="flex items-center">
+                  <FindWhiteSwitch
+                    {...register('policy', { required: true })}
+                    id="policy"
+                    {...label}
+                    color="primary"
+                    required
+                  />
+
+                  <p className="font-roboto-regular text-sm text-white text-opacity-80 ">
+                    I agree to the{' '}
+                    <Link
+                      href={'/privacy-policy/'}
+                      className="text-white text-opacity-80 underline "
+                      target={'_blank'}
+                    >
+                      Privacy Policy
+                    </Link>
+                  </p>
+                </div>
+              </div>
+
+              <Button
+                variant="outlined"
+                className="rounded-full px-6"
+                size="medium"
+                type={'submit'}
+              >
+                send
+              </Button>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                size="invisible"
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                onChange={onReCAPTCHAChange}
+                className="invisible absolute z-30 lg:visible"
+              />
+            </Box>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="mt-5 text-center text-xl font-thin text-white/80">
+          Thank you, your message has been sent! We will get back to you
+          shortly.
+        </div>
+      )}
     </section>
   );
 };

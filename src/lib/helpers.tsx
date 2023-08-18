@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 
 import { IPostResponseShort } from '@/interfaces/posts.interfaces';
 import TextField from '@mui/material/TextField';
+import Switch from '@mui/material/Switch';
 
 export const modifyUrlBackendToFrontend = (data: object): object => {
   // console.log('modifyUrlBackendToFrontend start', data);
@@ -72,6 +73,10 @@ export const FindWhiteTextField = styled(TextField)({
     {
       color: '#fff',
     },
+  // multi text color
+  '& .MuiInput-input': {
+    color: '#fff',
+  },
   // multiInput border noHover
   '& .css-94tsml-MuiInputBase-root-MuiInput-root:before': {
     borderBottomColor: '#A6A2A4',
@@ -117,5 +122,11 @@ export const FindWhiteTextField = styled(TextField)({
     '&.Mui-focused fieldset': {
       borderColor: '#fff',
     },
+  },
+});
+
+export const FindWhiteSwitch = styled(Switch)({
+  '.MuiSwitch-track': {
+    background: '#fff',
   },
 });
